@@ -3,59 +3,62 @@
 **Curso:** Desarrollo de Soluciones en la Nube  
 **Alumno:** Maria Fernanda Moya  
 **Docente:** Jaime Farfán  
-**Fecha:** 13 de mayo de 2026
+**Fecha:** 13 de mayo de 2026  
 
 ---
 
 ## Descripción
 
-Aplicación web full-stack que permite subir, visualizar y eliminar imágenes almacenadas en **Amazon S3**, implementando buenas prácticas de seguridad cloud:
+Aplicación web full-stack para subir, visualizar y eliminar imágenes almacenadas en **Amazon S3** usando buenas prácticas de seguridad cloud.
 
-- Bucket privado con cifrado en reposo (SSE-S3)
-- Política de bucket que fuerza HTTPS
+### Seguridad implementada
+- Bucket privado
+- Cifrado SSE-S3
+- HTTPS obligatorio
 - Usuario IAM con permisos mínimos
-- Presigned URLs para acceso temporal y seguro
-- Credenciales nunca expuestas al frontend
+- Presigned URLs para acceso temporal
+- Credenciales protegidas en backend
 
 ---
 
 ## Arquitectura
-Navegador → POST /api/upload-url → Backend (Express)
-↓
-Genera presigned URL
-↓
-Navegador → PUT directo ──────────→ Amazon S3
 
-El archivo viaja **directamente del navegador a S3** sin pasar por el backend.
+```text
+Navegador → Backend (Express) → Genera Presigned URL → Amazon S3
+```
+
+El archivo se sube directamente desde el navegador hacia S3 sin pasar por el backend.
 
 ---
 
 ## Estructura del proyecto
+
+```text
 Lab09-S3/
 ├── backend/
-│   ├── server.js          # API con Express + AWS SDK v3
+│   ├── server.js
 │   ├── package.json
-│   ├── .env               # ⚠️ NO subir a Git
-│   └── .gitignore
+│   └── .env
 └── frontend/
-├── index.html
-├── app.js
-└── styles.css
+    ├── index.html
+    ├── app.js
+    └── styles.css
+```
 
 ---
 
-## Requisitos previos
+## Requisitos
 
 - Node.js 18+
-- AWS CLI configurado (`aws configure`)
-- Cuenta de AWS con bucket S3 creado
-- Usuario IAM con permisos sobre el bucket
+- AWS CLI configurado
+- Bucket S3 creado
+- Usuario IAM con permisos sobre S3
 
 ---
 
-## Instalación y uso
+## Instalación
 
-### 1. Clonar el repositorio
+### 1. Clonar repositorio
 
 ```bash
 git clone <url-del-repo>
@@ -68,87 +71,56 @@ cd Lab09-S3/backend
 npm install
 ```
 
-### 3. Configurar variables de entorno
-
-Crea un archivo `.env` en la carpeta `backend/`:
+### 3. Configurar `.env`
 
 ```env
 AWS_REGION=us-east-1
-S3_BUCKET=nombre-de-tu-bucket
+S3_BUCKET=nombre-bucket
 AWS_ACCESS_KEY_ID=AKIA...
 AWS_SECRET_ACCESS_KEY=...
 PORT=3000
 ```
 
-### 4. Iniciar el servidor
+### 4. Ejecutar servidor
 
 ```bash
 node server.js
 ```
 
-El servidor quedará corriendo en `http://localhost:3000`
+Servidor disponible en:
 
-### 5. Abrir el frontend
+```text
+http://localhost:3000
+```
 
-Abre `frontend/index.html` en el navegador (con Live Server o directamente).
+### 5. Abrir frontend
+
+Abrir `frontend/index.html` con Live Server o en el navegador.
 
 ---
 
-## Endpoints de la API
+## Endpoints
 
 | Método | Endpoint | Descripción |
-|--------|----------|-------------|
-| POST | `/api/upload-url` | Genera presigned URL para subir imagen |
-| GET | `/api/images` | Lista imágenes con presigned URLs de visualización |
-| DELETE | `/api/images/:key` | Elimina una imagen del bucket |
-
----
-
-## Seguridad implementada
-
-| Medida | Detalle |
-|--------|---------|
-| Bucket privado | Block all public access activado |
-| HTTPS forzado | Política de bucket deniega HTTP |
-| Cifrado en reposo | SSE-S3 (AES-256) activado por defecto |
-| Permisos mínimos | Usuario IAM solo con s3:GetObject, PutObject, DeleteObject, ListBucket |
-| Presigned URLs | Subida expira en 5 min, visualización en 15 min |
-| Validación doble | Tipo y tamaño validados en frontend Y backend |
-| Sin credenciales en cliente | Las credenciales solo están en el servidor |
+|---|---|---|
+| POST | `/api/upload-url` | Genera URL de subida |
+| GET | `/api/images` | Lista imágenes |
+| DELETE | `/api/images/:key` | Elimina imagen |
 
 ---
 
 ## Validaciones
 
-- Solo se permiten archivos `image/jpeg`, `image/png`, `image/webp`
-- Tamaño máximo: **5 MB**
-- Validación en frontend y backend (doble capa)
+- Formatos permitidos: JPG, PNG y WEBP
+- Tamaño máximo: 5 MB
+- Validación en frontend y backend
 
 ---
 
-## Configuración CORS del bucket
+## Tecnologías
 
-```json
-[
-  {
-    "AllowedHeaders": ["*"],
-    "AllowedMethods": ["PUT", "GET"],
-    "AllowedOrigins": [
-      "http://localhost:3000",
-      "http://localhost:5500",
-      "http://127.0.0.1:5500"
-    ],
-    "ExposeHeaders": ["ETag"],
-    "MaxAgeSeconds": 3000
-  }
-]
-```
-
----
-
-## Tecnologías utilizadas
-
-- **Backend:** Node.js, Express, AWS SDK v3, dotenv
-- **Frontend:** HTML, CSS, JavaScript vanilla
-- **Cloud:** Amazon S3, IAM, presigned URLs
-- **Íconos:** Tabler Icons
+- Node.js
+- Express
+- AWS SDK v3
+- Amazon S3
+- HTML, CSS y JavaScript Vanilla
