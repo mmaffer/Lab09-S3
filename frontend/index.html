@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galería S3</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-icon"><i class="ti ti-cloud"></i></div>
+      <div>
+        <div class="header-title">Galería S3</div>
+        <div class="header-sub">lab-imagenes-moya-20260513-148617059189-us-east-1-an</div>
+      </div>
+    </div>
+    <div class="count-badge" id="count">0 archivos</div>
+  </header>
+
+  <main class="main">
+
+    <!-- Upload zone -->
+    <div class="upload-card" id="dropzone">
+      <div class="drop-area" id="dropArea">
+        <div class="drop-icon"><i class="ti ti-cloud-upload"></i></div>
+        <p class="drop-title">Arrastra una imagen aquí</p>
+        <p class="drop-hint">o haz clic para seleccionar &nbsp;·&nbsp; JPG, PNG, WEBP &nbsp;·&nbsp; máx. 5 MB</p>
+        <label class="file-btn" for="file">
+          <i class="ti ti-folder-open"></i> Elegir archivo
+        </label>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp">
+        <span class="file-name" id="file-name"></span>
+      </div>
+      <div class="upload-footer">
+        <div class="status-bar" id="status"></div>
+        <button class="upload-btn" id="uploadBtn">
+          <i class="ti ti-upload"></i> Subir imagen
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery-header">
+      <div class="section-label"><i class="ti ti-layout-grid"></i> Galería</div>
+    </div>
+    <div class="grid" id="gallery"></div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
