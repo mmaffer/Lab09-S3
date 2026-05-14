@@ -1,4 +1,4 @@
-# Lab 09 - Cloud Storage con Amazon S3
+# Lab 09 - Cloud Storage con Amazon S3 ☁️
 
 **Curso:** Desarrollo de Soluciones en la Nube  
 **Alumno:** Maria Fernanda Moya  
@@ -7,11 +7,11 @@
 
 ---
 
-## Descripción
+## 📌 Descripción
 
-Aplicación web full-stack para subir, visualizar y eliminar imágenes almacenadas en **Amazon S3** usando buenas prácticas de seguridad cloud.
+Aplicación web full-stack para subir, visualizar y eliminar imágenes almacenadas en **Amazon S3** utilizando buenas prácticas de seguridad cloud.
 
-### Seguridad implementada
+### 🔒 Seguridad implementada
 - Bucket privado
 - Cifrado SSE-S3
 - HTTPS obligatorio
@@ -21,7 +21,7 @@ Aplicación web full-stack para subir, visualizar y eliminar imágenes almacenad
 
 ---
 
-## Arquitectura
+## 🏗️ Arquitectura
 
 ```text
 Navegador → Backend (Express) → Genera Presigned URL → Amazon S3
@@ -31,7 +31,7 @@ El archivo se sube directamente desde el navegador hacia S3 sin pasar por el bac
 
 ---
 
-## Estructura del proyecto
+## 📁 Estructura del proyecto
 
 ```text
 Lab09-S3/
@@ -47,7 +47,7 @@ Lab09-S3/
 
 ---
 
-## Requisitos
+## ⚙️ Requisitos
 
 - Node.js 18+
 - AWS CLI configurado
@@ -56,7 +56,7 @@ Lab09-S3/
 
 ---
 
-## Instalación
+## 🚀 Instalación
 
 ### 1. Clonar repositorio
 
@@ -71,7 +71,7 @@ cd Lab09-S3/backend
 npm install
 ```
 
-### 3. Configurar `.env`
+### 3. Configurar variables de entorno
 
 ```env
 AWS_REGION=us-east-1
@@ -95,11 +95,11 @@ http://localhost:3000
 
 ### 5. Abrir frontend
 
-Abrir `frontend/index.html` con Live Server o en el navegador.
+Abrir `frontend/index.html` con Live Server o desde el navegador.
 
 ---
 
-## Endpoints
+## 🌐 Endpoints
 
 | Método | Endpoint | Descripción |
 |---|---|---|
@@ -109,7 +109,7 @@ Abrir `frontend/index.html` con Live Server o en el navegador.
 
 ---
 
-## Validaciones
+## ✅ Validaciones
 
 - Formatos permitidos: JPG, PNG y WEBP
 - Tamaño máximo: 5 MB
@@ -117,7 +117,19 @@ Abrir `frontend/index.html` con Live Server o en el navegador.
 
 ---
 
-## Tecnologías
+## 🎥 Video de demostración
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1Rgvu_WGp-ft6PrMs5UfcCacyCzB7yVGm/view?usp=sharing" target="_blank">
+    <img src="https://img.shields.io/badge/Ver%20Demo-Video-blue?style=for-the-badge&logo=youtube" />
+  </a>
+</p>
+
+> Reemplazar `https://drive.google.com/file/d/1Rgvu_WGp-ft6PrMs5UfcCacyCzB7yVGm/view?usp=sharing` por el enlace del video de demostración.
+
+---
+
+## 🛠️ Tecnologías utilizadas
 
 - Node.js
 - Express
