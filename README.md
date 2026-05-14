@@ -125,8 +125,6 @@ Abrir `frontend/index.html` con Live Server o desde el navegador.
   </a>
 </p>
 
-> Reemplazar `https://drive.google.com/file/d/1Rgvu_WGp-ft6PrMs5UfcCacyCzB7yVGm/view?usp=sharing` por el enlace del video de demostración.
-
 ---
 
 ## 🛠️ Tecnologías utilizadas
